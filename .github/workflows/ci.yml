@@ -24,4 +24,4 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: true
-          tags: kevin77200/${{ github.repository }}:${{ github.sha }}
+          tags: ${{ github.repository_owner }}/${{ github.repository#*/ }}:${{ github.sha }}
