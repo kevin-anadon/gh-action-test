@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gh-action-test
+  namespace: test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gh-action-test
+  template:
+    metadata:
+      labels:
+        app: gh-action-test
+    spec:
+      containers:
+      - name: gh-action-test
+        image: kevin77200/gh-action-test:${IMAGE_TAG}
+        ports:
+        - containerPort: 80
+      imagePullSecrets:
+      - name: dockerhub-secret

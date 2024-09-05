@@ -49,12 +49,17 @@ jobs:
         config: ${{ secrets.KUBE_CONFIG_DATA }}
         command: -n test set image --record deployment/gh-action-test gh-action-test=kevin77200/gh-action-test:${{ github.sha }}
     -
+      name: update deployment yml file if deployment not exists
+      if: env.deployment_exists == 'false'
+      run: |
+        sed -e "s/${IMAGE_TAG}/${{ github.sha }}/g" k8s/deployment.yaml > k8s/deployment.yaml
+    -
       name: create deployment if not exists
       if: env.deployment_exists == 'false'
       uses: steebchen/kubectl@v2.0.0
       with:
         config: ${{ secrets.KUBE_CONFIG_DATA }}
-        command: -n test create deployment gh-action-test --image=kevin77200/gh-action-test:${{ github.sha }} --image-pull-secrets='dockerhub-secret'
+        command: -n test apply -f k8s/deployment.yaml
     -
       name: verify deployment
       uses: steebchen/kubectl@v2.0.0
