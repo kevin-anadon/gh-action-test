@@ -39,6 +39,9 @@ jobs:
           k8s
           k8s/certs
     -
+      name: view temp files (test)
+      run: ls
+    -
       name: set context (test)
       uses: steebchen/kubectl@v2.0.0
       with:
