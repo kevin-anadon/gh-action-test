@@ -38,9 +38,10 @@ jobs:
         sparse-checkout: |
           k8s
           k8s/certs
+        lfs: true
     -
       name: view temp files (test)
-      run: ls
+      run: ls k8s/
     -
       name: set context (test)
       uses: steebchen/kubectl@v2.0.0
