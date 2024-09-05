@@ -37,9 +37,9 @@ jobs:
       with:
         sparse-checkout: |
           k8s
+          k8s/certs
     -
-      name: set context
-      if: env.deployment_exists == 'true'
+      name: set context (test)
       uses: steebchen/kubectl@v2.0.0
       with:
         config: ${{ secrets.KUBE_CONFIG_DATA }}
