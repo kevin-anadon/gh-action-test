@@ -33,10 +33,13 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     -
-      name: set context (Test)
+      name: set context (Test) kubectl
       uses: actions-hub/kubectl@master
       env:
-        KUBE_CONFIG: ${{ secrets.KUBE_CONFIG_DATA }}
+        KUBE_HOST: ${{ secrets.KUBE_HOST }}
+        KUBE_CERTIFICATE: ${{ secrets.KUBE_CERTIFICATE }}
+        KUBE_USERNAME: ${{ secrets.KUBE_USERNAME }}
+        KUBE_PASSWORD: ${{ secrets.KUBE_PASSWORD }}
       with:
         args: get pods -n test
     -
