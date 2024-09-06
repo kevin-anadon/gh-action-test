@@ -33,7 +33,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     -
-      name: set context (Test) kubectl
+      name: set context (Test)
       uses: actions-hub/kubectl@master
       env:
         KUBE_HOST: ${{ secrets.KUBE_HOST }}
