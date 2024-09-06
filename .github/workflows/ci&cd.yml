@@ -35,10 +35,10 @@ jobs:
       name: get repo files
       uses: actions/checkout@v4
       with:
-        sparse-checkout: |
-          k8s
-          k8s/certs
         lfs: true
+    - 
+      name: list files (debug)
+      run: pwd | ls | ls k8s/certs/
     -
       name: set context (test)
       uses: steebchen/kubectl@v2.0.0
