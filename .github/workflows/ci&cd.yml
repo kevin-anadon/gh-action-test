@@ -31,6 +31,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: docker
     steps:
+    - uses: actions/checkout@v4
     -
       name: set context (Test)
       uses: actions-hub/kubectl@master
