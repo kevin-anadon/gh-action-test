@@ -33,12 +33,12 @@ jobs:
     steps:
     - 
       name: get repo files
-      uses: actions/checkout@v4
+      uses: actions/checkout@master
       with:
         lfs: true
     - 
       name: list files (debug)
-      run: pwd | ls | ls k8s/certs/
+      run: pwd | ls k8s/certs/
     -
       name: set context (test)
       uses: steebchen/kubectl@v2.0.0
