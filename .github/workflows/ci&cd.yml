@@ -35,7 +35,7 @@ jobs:
     - 
       name: Check if deployment exists
       run: |
-        mkdir -p $HOME/.kube/config
+        mkdir $HOME/.kube
         (echo "${{ secrets.KUBE_CONFIG_DATA }}" | base64 --decode) > $HOME/.kube/config
         if kubectl get deployment gh-action-test -n test; then
           echo "Deployment exists."
