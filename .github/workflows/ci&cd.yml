@@ -31,6 +31,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: docker
     steps:
+    - name: pull repo for manifest yml files
+      uses: actions/checkout@master
     - name: Check if deployment exists
       run: |
         mkdir $HOME/.kube
@@ -55,6 +57,9 @@ jobs:
     - name: create deployment if not exists
       if: env.deployment_exists == 'false'
       run: kubectl apply -f k8s/deployment.yml -n test
+    - name: create service if not exists
+      if: env.deployment_exists == 'false'
+      run: kubectl apply -f k8s/service.yml -n test
     - name: verify deployment
       uses: steebchen/kubectl@v2.0.0
       env:
