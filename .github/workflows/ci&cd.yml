@@ -59,10 +59,7 @@ jobs:
     -
       name: create deployment if not exists
       if: env.deployment_exists == 'false'
-      uses: steebchen/kubectl@v2.0.0
-      with:
-        config: ${{ secrets.KUBE_CONFIG_DATA }}
-        command: -n test apply -f k8s/deployment.yaml
+      run: kubectl apply -f k8s/deployment.yml -n test
     -
       name: verify deployment
       uses: steebchen/kubectl@v2.0.0
