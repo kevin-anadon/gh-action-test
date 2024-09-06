@@ -35,9 +35,9 @@ jobs:
       name: set context (Test)
       uses: actions-hub/kubectl@master
       env:
-        KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
+        KUBE_CONFIG: ${{ secrets.KUBE_CONFIG_DATA }}
       with:
-        args: get pods
+        args: kubectl get pods -n test
     -
       name: check if deployment exists
       run: |
