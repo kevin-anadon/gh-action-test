@@ -37,7 +37,7 @@ jobs:
       env:
         KUBE_CONFIG: ${{ secrets.KUBE_CONFIG_DATA }}
       with:
-        args: kubectl get pods -n test
+        args: get pods -n test
     -
       name: check if deployment exists
       run: |
