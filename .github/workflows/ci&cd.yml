@@ -33,11 +33,10 @@ jobs:
     steps:
     -
       name: set context (Test)
-      uses: actions-hub/kubectl@master
-      env:
-        KUBE_CONFIG: ${{ secrets.KUBE_CONFIG_DATA }}
+      uses: steebchen/kubectl@v2.0.0
       with:
-        args: get pods -n test
+        config: ${{ secrets.KUBE_CONFIG_DATA }}
+        command: -n test get pods
     -
       name: check if deployment exists
       run: |
