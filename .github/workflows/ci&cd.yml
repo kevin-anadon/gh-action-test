@@ -31,20 +31,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: docker
     steps:
-    - 
-      name: get repo files
-      uses: actions/checkout@master
-      with:
-        lfs: true
-    - 
-      name: read files
-      run: ls /tmp/
-    - 
-      name: move files to tmp
-      run: mkdir -p /tmp/k8s/certs/; mv k8s/certs/* /tmp/k8s/certs/
-    - 
-      name: read files temp
-      run: ls /tmp/
     -
       name: set context (test)
       uses: steebchen/kubectl@v2.0.0
