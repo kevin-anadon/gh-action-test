@@ -38,7 +38,7 @@ jobs:
         lfs: true
     - 
       name: list files (debug)
-      run: pwd | ls k8s/certs/
+      run: pwd
     -
       name: set context (test)
       uses: steebchen/kubectl@v2.0.0
