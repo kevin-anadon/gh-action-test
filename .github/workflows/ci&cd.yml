@@ -40,9 +40,6 @@ jobs:
           k8s/certs
         lfs: true
     -
-      name: view temp files (test)
-      run: ls k8s/certs
-    -
       name: set context (test)
       uses: steebchen/kubectl@v2.0.0
       with:
