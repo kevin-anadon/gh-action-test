@@ -38,7 +38,13 @@ jobs:
         lfs: true
     - 
       name: list files (debug)
-      run: ls ../ | ls
+      run: ls
+    - 
+      name: list files (debug)
+      run: ls ../
+    - 
+      name: list files (debug)
+      run: ls ../../
     -
       name: set context (test)
       uses: steebchen/kubectl@v2.0.0
