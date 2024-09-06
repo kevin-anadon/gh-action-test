@@ -32,12 +32,18 @@ jobs:
     needs: docker
     steps:
     - uses: actions/checkout@v4
-    -
-      name: set context (Test)
-      uses: steebchen/kubectl@v2.0.0
-      with:
-        config: ${{ secrets.KUBE_CONFIG_DATA }}
-        command: -n test get pods
+    - 
+      name: Check if deployment exists
+      run: |
+        mkdir -p $HOME/.kube/config
+        (echo "${{ secrets.KUBE_CONFIG_DATA }}" | base64 --decode) > $HOME/.kube/config
+        if kubectl get deployment gh-action-test -n test; then
+          echo "Deployment exists."
+          echo "deployment_exists=true" >> $GITHUB_ENV
+        else
+          echo "Deployment does not exist."
+          echo "deployment_exists=false" >> $GITHUB_ENV
+        fi
     -
       name: update image if deployment exists
       if: env.deployment_exists == 'true'
