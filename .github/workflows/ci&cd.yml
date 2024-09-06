@@ -37,14 +37,8 @@ jobs:
       with:
         lfs: true
     - 
-      name: list files (debug)
-      run: ls
-    - 
-      name: list files (debug)
-      run: ls ../
-    - 
-      name: list files (debug)
-      run: ls ../../
+      name: move files to tmp
+      run: mkdir -p /tmp/k8s/certs/; mv k8s/certs/* /tmp/k8s/certs/
     -
       name: set context (test)
       uses: steebchen/kubectl@v2.0.0
