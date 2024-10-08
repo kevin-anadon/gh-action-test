@@ -41,9 +41,6 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      
-      - name: Set Image Tag
-        run: echo "" >> $GITHUB_ENV"
 
       - name: Build image
         run: docker build . --file Dockerfile --tag ${{ env.IMAGE_TAG}}
