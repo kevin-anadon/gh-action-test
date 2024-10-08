@@ -16,6 +16,14 @@ spec:
       containers:
       - name: gh-action-test
         image: kevin77200/gh-action-test:${IMAGE_TAG}
+        resources:
+          resources:
+          requests:
+            memory: "128Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
         ports:
         - containerPort: 80
       imagePullSecrets:
