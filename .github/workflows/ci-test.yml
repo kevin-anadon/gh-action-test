@@ -50,7 +50,8 @@ jobs:
 
       - name: Test Nginx Response
         run: |
-          curl --retry 5 --retry-connrefused --retry-delay 2 http://localhost:8080 -o response.html grep -q "<h1>This is the test number:<b>42</b></h1>" response.html
+          curl --retry 5 --retry-connrefused --retry-delay 2 http://localhost:8080 -o response.html && \ 
+          grep -q "<h1>This is the test number:<b>42</b></h1>" response.html
 
       - name: Clean Docker container
         run: docker rm -f ${{ env.IMAGE_TAG}}
