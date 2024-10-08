@@ -51,9 +51,9 @@ jobs:
       - name: Test Nginx Response
         run: |
           if curl http://localhost:8080 | grep -q "<h1>This is the test number:<b>42</b></h1>"; then
-            echo "TEST_PASSED=true" >> $GITHUB.env
+            echo "TEST_PASSED=true" >> $GITHUB_ENV
           else
-            echo "TEST_PASSED=false" >> $GITHUB.env
+            echo "TEST_PASSED=false" >> $GITHUB_ENV
           fi
 
       - name: Clean Docker container
