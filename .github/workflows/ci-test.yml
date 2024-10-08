@@ -31,7 +31,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       PUSH_IMAGE: true
-      IMAGE_TAG: kevin77200/${{ github.event.repository.name }}:${{ github.sha }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -41,7 +40,10 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-  
+      
+      - name: Set Image Tag
+        run: echo "IMAGE_TAG=kevin77200/${{ github.event.repository.name }}:${{ github.sha }}" >> $GITHUB_ENV"
+
       - name: Build image
         run: docker build . --file Dockerfile --tag ${{ IMAGE_TAG}}
 
