@@ -65,3 +65,9 @@ jobs:
 
       - name: Remove the Docker images
         run: docker rmi ${{ env.IMAGE_TAG}}
+
+      - name: Show exit status if failed
+        if: ${{ env.TEST_PASSED == 'false'}}
+        run: |
+          echo "Test didn't passed"
+          exit 1  # Exit with a failure status
